@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/omarelmady/Documents/GitHub/cs15'
+make: Leaving directory `/Users/omarelmady/Documents/GitHub/cs15'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
