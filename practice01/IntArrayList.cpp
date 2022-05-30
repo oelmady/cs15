@@ -21,7 +21,7 @@ IntArrayList::IntArrayList(){
 // destroys the IAL and outputs a message
 // no side effects
 IntArrayList::~IntArrayList(){
-    cout << "destroying IAL of size: " << currSize << " and capacity:" << capacity << endl;
+    cout << "Destroying IAL of size " << currSize << " and capacity " << capacity << endl;
 
     delete [] data;
 };
@@ -38,8 +38,8 @@ IntArrayList::IntArrayList(int initialSize, ElemType initialValue){
         exit(EXIT_FAILURE);
     } */
     capacity = initialSize;
-    
     ElemType *data = new ElemType[capacity];
+    data[0] = initialValue;
     currSize = 1;
 };
 
@@ -51,14 +51,14 @@ int IntArrayList::cap(){
 };
 
 void IntArrayList::addAtBack(ElemType el){
-    if (currSize == capacity) {
+    if (currSize >= capacity) {
         doubleCapacity();
     }
     data[currSize] = el;
     currSize++;
 };
 void IntArrayList::addAtFront(ElemType el){
-    if (currSize == capacity) {
+    if (currSize >= capacity) {
         doubleCapacity();
     }
     // copies each element of the array to an empty index + 1, starting with the index of the last element.
@@ -112,6 +112,7 @@ void IntArrayList::doubleCapacity(){
 
     // update capacity 
     capacity = newCapacity;
+
     // update data to point to the new Array
     data = newArray; 
 }
