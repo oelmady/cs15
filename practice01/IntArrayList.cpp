@@ -24,12 +24,13 @@ IntArrayList::~IntArrayList(){
     cout << "Destroying IAL of size " << currSize << " and capacity " << capacity << endl;
 
     delete [] data;
+    data = NULL;
 };
 
 // constructor 
 // takes as input a size parameter and an initial value for the first element of the IAL
 // returns nothing
-// creates an ElemType data structure on the heap of length initialSize, containing 1 value
+// creates an ElemType data structure on the heap of capacity initialSize, containing 1 value
 // error if the initialValue is not ElemType
 IntArrayList::IntArrayList(int initialSize, ElemType initialValue){
     /*
@@ -70,11 +71,29 @@ void IntArrayList::addAtFront(ElemType el){
     data[0] = el;
     currSize++;
 };
-void IntArrayList::addAt(ElemType el){
-
+void IntArrayList::addAt(int index, ElemType el){
+    if (currSize >= capacity) {
+        doubleCapacity();
+    }
+    // moves all elements after index the right
+    for (int i = currSize; i > index; i--) {
+        data[i + 1] = data[i];
+    }
+    data[index] = el;
+    currSize++;
 };
-void IntArrayList::removeAt(int index){
 
+void IntArrayList::removeAt(int index){
+    // reduce size by 1
+    // move items > index down by 1 
+    // [ 0, 1, 2, 3, 4, 5]
+    // [0, 2, 3, 4]
+    if (index >= currSize) {
+        throw range_error("Index out of bounds.");
+    }
+    
+    
+    currSize--;
 };
 void IntArrayList::removeFirstOccurrence(ElemType el){
 
@@ -90,8 +109,8 @@ ElemType IntArrayList::elementAt(int index){
 };
 
 void IntArrayList::print() {
-    for (int i = 0; i < currSize; ) {
-        cout << data[i++] << " ";
+    for (int i = 0; i < currSize; i++) {
+        cout << data[i] << " ";
     }
     cout << endl;
 };
@@ -109,10 +128,11 @@ void IntArrayList::doubleCapacity(){
     }
     // recylce old array
     delete [] data;
-    
+    data = nullptr;
+
     // update data to point to the new Array
     data = newArray; 
-    
+
     // update capacity 
     capacity = newCapacity;
 }

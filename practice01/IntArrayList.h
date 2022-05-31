@@ -20,7 +20,8 @@ public: // interface
 
     void addAtBack(ElemType el);
     void addAtFront(ElemType el);
-    void addAt(ElemType el);
+    void addAt(int index, ElemType el);
+    
     void removeAt(int index);
     void removeFirstOccurrence(ElemType el);
     int indexOf(ElemType el);
