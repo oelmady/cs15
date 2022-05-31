@@ -109,10 +109,10 @@ void IntArrayList::doubleCapacity(){
     }
     // recylce old array
     delete [] data;
-
-    // update capacity 
-    capacity = newCapacity;
-
+    
     // update data to point to the new Array
     data = newArray; 
+    
+    // update capacity 
+    capacity = newCapacity;
 }
