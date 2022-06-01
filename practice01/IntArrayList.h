@@ -21,18 +21,18 @@ public: // interface
     void addAtBack(ElemType el);
     void addAtFront(ElemType el);
     void addAt(int index, ElemType el);
-    
+
     void removeAt(int index);
     void removeFirstOccurrence(ElemType el);
+    
     int indexOf(ElemType el);
     ElemType elementAt(int index);
 
     void print();
 
 private: // implementation details
-    int currSize, capacity; // current and maximum number of elements that can be stored by the IAL
+    int currSize, capacity; 
     ElemType *data;
-    // a pointer to the heap data
     void doubleCapacity();
 
 };
