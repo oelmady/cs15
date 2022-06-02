@@ -21,13 +21,13 @@ int main(){
     cout << "elementAt: " << indOf1 << " is: " << elAt1 << endl; // 1
     ial1.removeFirstOccurrence(elAt1); // [2,0,1]
 
-/*
     try {
         ial1.removeAt(4);
-    } catch (const char* msg) {
-     cerr << msg << endl; 
+    } 
+    catch (const range_error& e) {
+        cerr << e.what() << endl; 
     }
-*/
+
     cout << "contents: "; 
     ial1.print();
     return 0;

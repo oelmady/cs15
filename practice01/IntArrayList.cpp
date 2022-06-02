@@ -94,7 +94,7 @@ void IntArrayList::addAt(int index, ElemType el){
 // [ 0, 1, 2, 3, 4, X] -> [0, 2, 3, 4, X, X]
 void IntArrayList::removeAt(int index){
     if (index >= currSize) {
-        throw range_error("Index out of bounds.");
+        throw range_error("Input index out of bounds.");
     }
     ElemType* newArray = new ElemType[capacity];
     for (int i = 0; i < currSize; i++) {

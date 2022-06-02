@@ -4,17 +4,19 @@
  *
  *  testCharArrayList.cpp
  *
- *  PURPOSE
+ *  main interface for testing the CharArrayList class 
  *
- *  Written by:
- *          on:
+ *  Written by: Omar Elmady
+ *          on: June 4 2022
  */
-
+#include "CharArrayList.h"
 #include <iostream>
+
+using namespace std;
 
 int main()
 {
+    CharArrayList dinner = CharArrayList("dinner", 5);
 
-    
     return 0;
 }

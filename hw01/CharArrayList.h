@@ -6,7 +6,47 @@
  *
  *  PURPOSE
  *
- *  Modified by:
- *           on:
+ *  Modified by: Omar Elmady
+ *           on: June 4 2022
  *
  */
+#ifndef INTARRAYLIST_H
+#define INTARRAYLIST_H
+
+class CharArrayList {
+public: // interface
+    CharArrayList();
+    CharArrayList(char c);
+    CharArrayList(char* arr, int len);
+    CharArrayList(const CharArrayList &copy);
+    ~CharArrayList();
+
+    CharArrayList& operator=(const CharArrayList& copy);
+    bool isEmpty();
+    void clear();
+    int size();
+    char first();
+    char last();
+    char elementAt(int index);
+    
+    void print();
+
+    void pushAtBack(char c);
+    void pushAtFront(char c);
+    void insertAt(char c, int index);
+    void insertInOrder(char c);
+
+    void popFromFront();
+    void popFromBack();
+    void removeAt(int index);
+
+    void replaceAt(char c, int index);
+    void concatenate(CharArrayList * cat);
+
+    void shrink();
+private: // implementation
+    int length;
+    char* data;
+    void doubleCapacity();
+};
+#endif

@@ -76,7 +76,7 @@ int main()
  */
 void program_execution()
 {
-        cout << "Result:  " << crash() << endl;
+        // cout << "Result:  " << crash() << endl;
         cout << "This won't print" << endl;
 }
 
