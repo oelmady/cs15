@@ -38,6 +38,7 @@ CharArrayList::CharArrayList(char* arr, int len){
 };
 
 // A copy constructor for the class that makes a deep copy of a given instance.
+// initialized T a = b, where b is of class T
 CharArrayList::CharArrayList(const CharArrayList& copy){
 
 
@@ -45,24 +46,34 @@ CharArrayList::CharArrayList(const CharArrayList& copy){
 
 // a destructor that destroys/deletes/recycles all heap-allocated data in the cur- rent array list. It has no parameters and returns nothing.
 CharArrayList::~CharArrayList(){
-
-
+    data = nullptr;
+    data = NULL;
 };
-//an assignment operator for the class that recycles the storage associated with the instance on the left of the assignment and makes a deep copy of the instance on the right hand side into the instance on the left hand side.
-CharArrayList::CharArrayList& operator=(const CharArrayList& copy){
 
+//an assignment operator for the class that recycles the storage associated with the instance on the left of the assignment and makes a deep copy of the instance on the right hand side into the instance on the left hand side.
+CharArrayList::CharArrayList& operator=(const CharArrayList& rhs){
+    int copyLen = rhs.size();
+    char* lhs = new char[copyLen];
+    for (int i = 0; i < copyLen; i++) {
+        lhs[i] = rhs[i];
+    }
+
+    delete [] data;
+
+    data = lhs;
 };
 
 //isEmpty function that takes no parameters and returns a boolean value that is true if this specific instance of the class is empty (has no characters) and false otherwise.
 bool CharArrayList::isEmpty(){
-
+    return this->data == nullptr;
 
 };
 
 //clear function that takes no parameters and has a void return type. It makes the instance into an empty array list. For example if you call the clear function and then the isEmpty function the isEmpty function should return true.
 void CharArrayList::clear(){
-
-
+    char* emptyArr = new char[0];
+    delete [] data;
+    data = emptyArr;
 };
 
 //size function that takes no parameters and returns an integer value that is the number of characters in the array list. 
@@ -92,8 +103,12 @@ char CharArrayList::elementAt(int index){
 
 // a function that takes no parameters and returns nothing. prints [CharArrayList of size (size) <<(content) >>]
 void CharArrayList::print(){
-
-
+    cout << "[CharArrayList of size " << size();
+    cout << " << ";
+    for (int i = 0; i < length; i++) {
+        cout << data[i] << " ";
+    }
+    cout << " >>]";
 };
 
 //pushAtBack function that takes an element (char) and has a void return type. It inserts the given new element after the end of the existing elements of the array list.

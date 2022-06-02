@@ -18,10 +18,10 @@ public: // interface
     CharArrayList();
     CharArrayList(char c);
     CharArrayList(char* arr, int len);
-    CharArrayList(const CharArrayList &copy);
+    CharArrayList(const CharArrayList& copy);
     ~CharArrayList();
 
-    CharArrayList& operator=(const CharArrayList& copy);
+    CharArrayList& operator=(const CharArrayList& rhs);
     bool isEmpty();
     void clear();
     int size();
@@ -47,6 +47,6 @@ public: // interface
 private: // implementation
     int length;
     char* data;
-    void doubleCapacity();
+    void resize();
 };
 #endif
