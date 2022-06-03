@@ -7,9 +7,10 @@
  *  function definitions for the implementation of the CharArrayList class 
  *
  *  Modified by: Omar Elmady
- *           On: June 4 2022
+ *           On: June 5 2022
  *
  */
+
 #include "CharArrayList.h"
 #include <iostream>
 
@@ -19,14 +20,12 @@ using namespace std;
 CharArrayList::CharArrayList(){
     length = 0;
     data   = nullptr;
-
 };
 // a constructor taking in a single char as a parameter and creates a one-element array list consisting of that character, with capacity 1
 CharArrayList::CharArrayList(char c){
     length = 1;
     char* data = new char[length];
     data[0] = c;
-
 };
 // a constructor taking an array of characters (or equivalently a pointer to a char array, or string) and the integer length of the array, and creates an array list containing the characters of the array with an initial capacity equal to the length of the array that was passed in.
 CharArrayList::CharArrayList(char* arr, int len){
@@ -40,8 +39,11 @@ CharArrayList::CharArrayList(char* arr, int len){
 // A copy constructor for the class that makes a deep copy of a given instance.
 // initialized T a = b, where b is of class T
 CharArrayList::CharArrayList(const CharArrayList& copy){
-
-
+    length = copy.length;
+    char* data = new char[length];
+    for (int i = 0; i < copy.length; i++) {
+        data[i] = copy[i];
+    }
 };
 
 // a destructor that destroys/deletes/recycles all heap-allocated data in the cur- rent array list. It has no parameters and returns nothing.
@@ -66,7 +68,6 @@ CharArrayList::CharArrayList& operator=(const CharArrayList& rhs){
 //isEmpty function that takes no parameters and returns a boolean value that is true if this specific instance of the class is empty (has no characters) and false otherwise.
 bool CharArrayList::isEmpty(){
     return this->data == nullptr;
-
 };
 
 //clear function that takes no parameters and has a void return type. It makes the instance into an empty array list. For example if you call the clear function and then the isEmpty function the isEmpty function should return true.
@@ -78,37 +79,39 @@ void CharArrayList::clear(){
 
 //size function that takes no parameters and returns an integer value that is the number of characters in the array list. 
 int CharArrayList::size(){
-
-
+    return length;
 };
 
 // first function that takes no parameters and returns the first element (char) in the array list. If the array list is empty it will throw a runtime_error exception with the message “cannot get first of empty ArrayList”.
 char CharArrayList::first(){
-
-
+    return data[0];
 };
 
 //last function that takes no parameters and returns the last element (char) in the array list. If the array list is empty it throws a std::runtime_error exception with the message “cannot get last of empty ArrayList”.
 char CharArrayList::last(){
-
-
+    if (length == 0) {
+        throw runtime_error("cannot get last of empty ArrayList");
+    }
+    return data[length - 1];
 };
 
 //elementAt function that takes an integer index and returns the element (char) in the array list at that index. 
 char CharArrayList::elementAt(int index){
-
-
+    if (index >= length) {
+        throw range_error("index out of bounds");
+    }
+    return data[index];
 };
-    
 
-// a function that takes no parameters and returns nothing. prints [CharArrayList of size (size) <<(content) >>]
+// a function that takes no parameters and returns nothing. prints 
+//[CharArrayList of size n <<content>>]
 void CharArrayList::print(){
     cout << "[CharArrayList of size " << size();
-    cout << " << ";
+    cout << " <<";
     for (int i = 0; i < length; i++) {
-        cout << data[i] << " ";
+        cout << data[i];
     }
-    cout << " >>]";
+    cout << ">>]";
 };
 
 //pushAtBack function that takes an element (char) and has a void return type. It inserts the given new element after the end of the existing elements of the array list.

@@ -7,7 +7,7 @@
  *  PURPOSE
  *
  *  Modified by: Omar Elmady
- *           on: June 4 2022
+ *           on: June 5 2022
  *
  */
 #ifndef INTARRAYLIST_H
@@ -18,13 +18,13 @@ public: // interface
     CharArrayList();
     CharArrayList(char c);
     CharArrayList(char* arr, int len);
-    CharArrayList(const CharArrayList& copy);
+    CharArrayList(const CharArrayList & copy);
     ~CharArrayList();
 
     CharArrayList& operator=(const CharArrayList& rhs);
     bool isEmpty();
     void clear();
-    int size();
+    int  size();
     char first();
     char last();
     char elementAt(int index);
@@ -45,7 +45,7 @@ public: // interface
 
     void shrink();
 private: // implementation
-    int length;
+    unsigned int length;
     char* data;
     void resize();
 };
