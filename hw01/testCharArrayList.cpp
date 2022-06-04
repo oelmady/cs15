@@ -16,19 +16,19 @@ using namespace std;
 
 int main()
 {
-    CharArrayList dinner = CharArrayList("dinner", 7);
-    dinner.size();
-    dinner.print();
-    dinner.first();
-    dinner.last();
-    dinner.elementAt(0);
-    dinner.elementAt(6);
-    dinner.clear();
-    dinner.isEmpty();
+    CharArrayList x = CharArrayList('x');
+    x.size();
+    x.print();
+    x.first();
+    x.last();
+    x.elementAt(0);
+    x.elementAt(0);
+    x.clear();
+    x.isEmpty();
 
     try {
 
-    } catch(const std::exception& e) {
+    } catch(const exception& e) {
         cout << e.what() << endl;
     }
     return 0;

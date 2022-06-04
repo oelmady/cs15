@@ -46,6 +46,7 @@ public: // interface
     void shrink();
 private: // implementation
     unsigned int length;
+    unsigned int capacity;
     char* data;
     void resize();
 };

@@ -32,11 +32,7 @@ IntArrayList::~IntArrayList(){
 // creates an ElemType data structure on the heap of capacity initialSize, containing 1 value
 // error if the initialValue is not ElemType
 IntArrayList::IntArrayList(int initialSize, ElemType initialValue){
-    /*
-    if (typeid(initialValue) != ElemType) {
-        cerr << "invalid input type. Expected: " << typeid(ElemType) << ", got: " << typeid(initialValue) << endl;
-        exit(EXIT_FAILURE);
-    } */
+ 
     capacity = initialSize;
     currSize = 1;
 	data     = new ElemType[capacity];
